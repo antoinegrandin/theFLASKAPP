@@ -1,0 +1,23 @@
+version: "3"
+services:
+  db:
+    image: postgres:latest
+    environment:      
+      - SECRET_KEY=averyhardstring
+      - POSTGRES_USER=testusr     
+      - POSTGRES_PASSWORD=password      
+      - POSTGRES_DB=testdb
+    ports:
+      - "5432:5432"
+  flaskapp:
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    command: python app.py runserver --host=0.0.0.0 --threaded
+    ports:
+      - "5000:5000"
+    depends_on:
+      - "db"
+
+
+  
