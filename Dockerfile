@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 5000
 
 # Command to execute the python script
-CMD ["python", "app.py"]
+CMD ["python", "app.py" ,"runserver",  "--host=0.0.0.0",  "--threaded"]
